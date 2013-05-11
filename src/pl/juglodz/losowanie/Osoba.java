@@ -1,6 +1,8 @@
 package pl.juglodz.losowanie;
 
-public class Osoba {
+import java.io.Serializable;
+
+public class Osoba implements Serializable{
 	private String imie;
 	private String nazwisko;
 	public String getImie() {

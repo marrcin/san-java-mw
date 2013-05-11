@@ -1,5 +1,6 @@
 package pl.juglodz.losowanie;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -41,23 +42,30 @@ public class Generator {
 			Osoba o = new Osoba();
 			o.setImie(imiona.get(losowacz.nextInt(imiona.size())));
 			o.setNazwisko(nazwiska.get(losowacz.nextInt(nazwiska.size())));
-			
+
 			osoby.add(o);
 		}
-		
 
 		return osoby;
 
 	}
-	
-	public static void main(String args[]){
+
+	public static void main(String args[]) {
 		Generator gr = new Generator();
-		
+
 		List<Osoba> osoby = gr.generetaOsoba(666);
 		for (Osoba osoba : osoby) {
-		System.out.println(osoba);	
+			System.out.println(osoba);
+			
+			
 		}
-	
+		try {
+			zapis.saver(osoby);
+		} catch (IOException e) {
+			System.out.println("Nie udalo sie zapisac");
+			e.printStackTrace();
+		}
+
 	}
 
 }
