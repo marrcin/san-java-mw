@@ -61,6 +61,12 @@ public class Generator {
 		}
 		try {
 			zapis.saver(osoby);
+			try {
+				ZapisXml.saverXml(osoby);
+			} catch (Exception e) {
+				System.out.println("Nie moge zapisac XML");
+				e.printStackTrace();
+			}
 		} catch (IOException e) {
 			System.out.println("Nie udalo sie zapisac");
 			e.printStackTrace();
